@@ -85,8 +85,9 @@ if [[ $clean -eq 1 ]]; then
     exit
 fi
 
+dotlink profile
 dotlink bashrc
-dotlink bash_aliases
+dotlink zshrc
 dotlink tmux.conf
 dotlink dircolors
 dotlink optional
