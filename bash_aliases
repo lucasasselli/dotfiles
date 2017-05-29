@@ -1,0 +1,1 @@
+alias br="source .bashrc"

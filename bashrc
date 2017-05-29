@@ -73,9 +73,9 @@ xterm*|rxvt*)
 esac
 
 # tmux as default
-if command -v tmux>/dev/null; then
-  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
-fi
+# if command -v tmux>/dev/null; then
+#   [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+# fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -133,3 +133,9 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
+
+# Linuxbrew
+export HOMEBREW_BUILD_FROM_SOURCE=1
+PATH="$HOME/dotfiles/.install/Linuxbrew/bin:$PATH"
+export MANPATH="$(brew --prefix)/share/man:$MANPATH"
+export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
