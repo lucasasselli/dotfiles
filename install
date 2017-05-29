@@ -1,0 +1,34 @@
+#!/bin/bash
+# Store current dir
+DIR=$(pwd)
+
+# make a symlink to home directory for given dotfile
+function dotlink(){
+    local FROM=$HOME/.$1
+    local TO=$DIR/$1
+
+    if [ -d "$FROM" ]; 
+    then
+        echo "Directory $FROM exists, deleting..."
+        rm -r $FROM
+    fi
+
+    if [ -f "$FROM" ]; 
+    then
+        echo "File $FROM exists, deleting..."
+        rm $FROM
+    fi
+
+    echo "Simlink from $FROM to $TO created!"
+    ln -sfn $TO $FROM
+}
+
+git submodule init
+git submodule update
+
+dotlink bashrc
+dotlink bash_aliases
+dotlink tmux.conf
+dotlink dircolors
+dotlink config/base16-shell
+
