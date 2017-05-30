@@ -40,14 +40,14 @@ alias rz="source $HOME/.zshrc"
 if [ -f $HOME/.zshlocal ]; then source $HOME/.zshlocal; fi
 
 # Optional stuff
-if [ -d $HOME/.optional/Linuxbrew ]; then
+if [ -d $HOME/.linuxbrew ]; then
     PATH="$HOME/dotfiles/.install/Linuxbrew/bin:$PATH"
     export HOMEBREW_BUILD_FROM_SOURCE=1
     export MANPATH="$(brew --prefix)/share/man:$MANPATH"
     export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
 fi
 
-if [ -d $HOME/.optional/base16-shell ]; then
+if [ -d $HOME/.base16-shell ]; then
     BASE16_SHELL=$HOME/.optional/base16-shell/
     [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)" 
 fi

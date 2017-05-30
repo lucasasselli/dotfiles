@@ -2,9 +2,6 @@
 
 DIR=$(pwd)
 
-# Constants
-INSTALL_DIR=optional
-
 # make a symlink to home directory for given dotfile
 function dotlink(){
     local FROM=$HOME/.$1
@@ -81,7 +78,8 @@ done
 
 if [[ $clean -eq 1 ]]; then
     echo 'Cleaning install path...'
-    rm -rf $INSTALL_DIR
+    rm -rf $HOME/.linuxbrew
+    rm -rf $HOME/.base16-shell
     exit
 fi
 
@@ -93,9 +91,9 @@ dotlink dircolors
 dotlink optional
 
 if [[ $brew -eq 1 ]]; then
-    git clone https://github.com/Linuxbrew/brew.git $INSTALL_DIR/Linuxbrew
+    git clone https://github.com/Linuxbrew/brew.git $HOME/.linuxbrew
 fi
 
 if [[ $colors -eq 1 ]]; then
-    git clone https://github.com/chriskempson/base16-shell.git $INSTALL_DIR/base16-shell
+    git clone https://github.com/chriskempson/base16-shell.git $HOME/.base16-shell
 fi
