@@ -1,3 +1,7 @@
-# Sets default shell to zsh even if there's not root access
-export SHELL='which zsh'
-[ -z "$ZSH_VERSION" ] && exec "$SHELL" -l
+# If using bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi
