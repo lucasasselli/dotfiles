@@ -25,15 +25,7 @@ export EDITOR="$VISUAL"
 
 # Prompt theme
 PROMPT="%B%(?..[%?] )%b%n@%U%m%u>"
-
-zle -N zle-line-init
-zle -N zle-keymap-select
-
-function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%F{yellow} [% NORMAL]% %{$reset_color%}"
-    RPROMPT="%F{green}%~%f${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
-    zle reset-prompt
-}
+RPROMPT="%F{green}%~%f"
 
 # Set dircolors
 if [ -x /usr/bin/dircolors ]; then
