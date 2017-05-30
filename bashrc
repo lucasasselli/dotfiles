@@ -1,7 +1,7 @@
 # Add Linuxbrew to path
 if [ -d $HOME/.linuxbrew ]; then
     PATH="$HOME/.linuxbrew/bin:$PATH"
-    export HOMEBREW_BUILD_FROM_SOURCE=1
+    # export HOMEBREW_BUILD_FROM_SOURCE=1
     export MANPATH="$(brew --prefix)/share/man:$MANPATH"
     export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
 fi

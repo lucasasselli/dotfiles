@@ -88,7 +88,6 @@ dotlink bashrc
 dotlink zshrc
 dotlink tmux.conf
 dotlink dircolors
-dotlink optional
 
 if [[ $brew -eq 1 ]]; then
     git clone https://github.com/Linuxbrew/brew.git $HOME/.linuxbrew
