@@ -14,10 +14,26 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd extendedglob
 unsetopt beep
-bindkey -e
+
+# Vim mode
+bindkey -v
+export KEYTIMEOUT=1 # No insert/normal delay
+
+# Editor settings
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 # Prompt theme
-prompt walters
+PROMPT="%B%(?..[%?] )%b%n@%U%m%u>"
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%F{yellow} [% NORMAL]% %{$reset_color%}"
+    RPROMPT="%F{green}%~%f${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
+    zle reset-prompt
+}
 
 # Set dircolors
 if [ -x /usr/bin/dircolors ]; then
