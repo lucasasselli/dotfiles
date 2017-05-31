@@ -1,5 +1,9 @@
 # Autoload tmux if not in it
-if [ "$TMUX" = "" ]; then tmux; fi
+if [ ! -z $(which tmux) ]; then
+    if [ "$TMUX" = "" ]; then tmux; fi
+else
+    echo "zsh not intalled!"
+fi
 
 #{{{ ZSH Modules
 
@@ -40,6 +44,7 @@ fi
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Alias 
+alias c="clear"
 alias ll="ls -l"
 alias la="ls -l -a"
 alias rz="source $HOME/.zshrc"
