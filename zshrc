@@ -5,22 +5,34 @@ else
     echo "zsh not intalled!"
 fi
 
-#{{{ ZSH Modules
+# {{{ ZSH Modules
 
-autoload -U compinit promptinit zcalc
+autoload -U compinit
+autoload -U promptinit
+autoload -U zcalc
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
 compinit
 promptinit
 
-#}}}
+# }}}
 
-HISTFILE=~/.histfile
+# {{{ HISTORY
+
+HISTFILE=~/.histfile # History file
 HISTSIZE=1000
 SAVEHIST=1000
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
+
+# }}}
+
 setopt appendhistory autocd extendedglob
 unsetopt beep
 
-# Vim mode
-bindkey -v
+bindkey -e # Emacs mode
 export KEYTIMEOUT=1 # No insert/normal delay
 
 # Editor settings
@@ -43,16 +55,23 @@ fi
 # Use LS_COLORS for color completion
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# Alias 
+# {{{ ALIASES 
+
 alias c="clear"
 alias ll="ls -l"
 alias la="ls -l -a"
+alias ez="vim $HOME/.zshrc"
+alias ev="vim $HOME/.vimrc"
 alias rz="source $HOME/.zshrc"
+
+# }}}
 
 # External files
 if [ -f $HOME/.zshlocal ]; then source $HOME/.zshlocal; fi
 
-# Optional stuff
+# {{{ OTHERS
+
+# Linuxbrew
 if [ -d $HOME/.linuxbrew ]; then
     PATH="$HOME/.linuxbrew/bin:$PATH"
     # export HOMEBREW_BUILD_FROM_SOURCE=1
@@ -60,9 +79,12 @@ if [ -d $HOME/.linuxbrew ]; then
     export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
 fi
 
+# Base16 color shell
 if [ -d $HOME/.base16-shell ]; then
     BASE16_SHELL=$HOME/.base16-shell/
     [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)" 
 fi
+
+# }}}
 
 # vim:fdm=marker fdl=0
