@@ -40,7 +40,7 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # Prompt theme
-PROMPT="%B%(?..[%?] )%b%n@%U%m%u>"
+PROMPT="%b%n@%U%m%u>"
 RPROMPT="%F{green}%~%f"
 
 # Set dircolors
@@ -68,6 +68,9 @@ alias rz="source $HOME/.zshrc"
 
 # External files
 if [ -f $HOME/.zshlocal ]; then source $HOME/.zshlocal; fi
+
+# Path
+PATH=$HOME/local/bin:$PATH
 
 # {{{ OTHERS
 

@@ -1,3 +1,5 @@
+PATH=$HOME/local/bin:$PATH
+
 # Add Linuxbrew to path
 if [ -d $HOME/.linuxbrew ]; then
     PATH="$HOME/.linuxbrew/bin:$PATH"
