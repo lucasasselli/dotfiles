@@ -29,7 +29,12 @@ zle -N down-line-or-beginning-search
 
 # }}}
 
-setopt appendhistory autocd extendedglob
+setopt appendhistory
+setopt autocd
+setopt extendedglob
+setopt inc_append_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
 unsetopt beep
 
 bindkey -e # Emacs mode
