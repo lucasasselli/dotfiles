@@ -1,9 +1,9 @@
-# Autoload tmux if not in it
-if [ ! -z $(which tmux) ]; then
-    if [ "$TMUX" = "" ]; then tmux; fi
-else
-    echo "zsh not intalled!"
-fi
+# # Autoload tmux if not in it
+# if [ ! -z $(which tmux) ]; then
+#     if [ "$TMUX" = "" ]; then tmux; fi
+# else
+#     echo "zsh not intalled!"
+# fi
 
 # {{{ ZSH Modules
 
@@ -67,6 +67,8 @@ alias ll="ls -l"
 alias lll="ll | less"
 alias la="ls -l -a"
 alias lal="la | less"
+alias t="tmux"
+alias ta="tmux attach"
 
 alias mkdir="mkdir -pv" # mkdir and parents
 
