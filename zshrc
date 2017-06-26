@@ -5,29 +5,7 @@
 #     echo "zsh not intalled!"
 # fi
 
-# {{{ ZSH Modules
-
-autoload -U compinit
-autoload -U promptinit
-autoload -U zcalc
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-compinit
-promptinit
-
-# }}}
-
-# {{{ HISTORY
-
-HISTFILE=~/.histfile # History file
-HISTSIZE=1000
-SAVEHIST=1000
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
-
-# }}}
+# {{{ Set/Unset ZSH options
 
 setopt appendhistory
 setopt autocd
@@ -36,6 +14,24 @@ setopt inc_append_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
 unsetopt beep
+
+# }}}
+
+# {{{ ZSH Modules
+
+autoload -U promptinit
+autoload -U zcalc
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+promptinit
+
+# }}}
+
+HISTFILE=~/.histfile # History file
+HISTSIZE=1000
+SAVEHIST=1000
 
 bindkey -e # Emacs mode
 export KEYTIMEOUT=1 # No insert/normal delay
@@ -56,9 +52,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
-# Use LS_COLORS for color completion
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # {{{ ALIASES 
 
@@ -110,6 +103,15 @@ function extract {
     fi
 fi
 }
+
+# }}}
+
+# {{{ COMPLETION
+
+autoload -U compinit
+compinit
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
 
 # }}}
 
