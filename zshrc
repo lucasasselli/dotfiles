@@ -63,10 +63,12 @@ alias lal="la | less"
 
 alias mkdir="mkdir -pv" # mkdir and parents
 
-
 alias ez="vim $HOME/.zshrc"
 alias ev="vim $HOME/.vimrc"
 alias rz="source $HOME/.zshrc"
+
+alias t="tmux"
+alias ta="tmux attach"
 
 # }}}
 
