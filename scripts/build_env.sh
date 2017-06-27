@@ -15,6 +15,7 @@ LIBEVENT_VERSION=2.0.22-stable
 NCURSES_VERSION=6.0
 
 # create our directories
+rm -rf $HOME/install_temp
 mkdir -p $HOME/local $HOME/install_temp
 cd $HOME/install_temp
 
@@ -51,21 +52,19 @@ cd ..
 ##################################################
 tar xvzf tmux-$TMUX_VERSION.tar.gz
 cd tmux-$TMUX_VERSION
-./configure CFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-L$HOME/local/lib -L$HOME/local/include/ncurses -L$HOME/local/include"
-CPPFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-static -L$HOME/local/include -L$HOME/local/include/ncurses -L$HOME/local/lib" make
+./configure CFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-L$HOME/local/lib64 -L$HOME/local/include/ncurses -L$HOME/local/include"
+CPPFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-static -L$HOME/local/include -L$HOME/local/include/ncurses -L$HOME/local/lib64" make
 cp tmux $HOME/local/bin
 cd ..
 
 ##################################################
 # vim
 ##################################################
-tar xvzf vim-v$VIM_VERSION.tar.gz
-cd v$VIM_VERSION
-./configure --enable-gui=no --without-x -with-features=huge --prefix=$HOME/local --with-tlib=ncurses LDFLAGS="-L$HOME/local/lib -L$HOME/local/include/ncurses -L$HOME/local/include"
+tar xvzf vim-$VIM_VERSION.tar.gz
+cd vim-$VIM_VERSION
+./configure --enable-gui=no --without-x -with-features=huge --prefix=$HOME/local --with-tlib=ncurses LDFLAGS="-L$HOME/local/lib64 -L$HOME/local/include/ncurses -L$HOME/local/include"
 make
 make install
 
 # cleanup
-rm -rf $HOME/tmux_tmp
-
-echo "$HOME/local/bin/tmux is now available. You can optionally add $HOME/local/bin to your PATH."
+rm -rf $HOME/install_temp
