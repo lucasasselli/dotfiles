@@ -1,3 +1,6 @@
+# Don't break non-interactive shells
+[ -z "$PS1" ] && return
+
 PATH=$HOME/local/bin:$PATH
 
 # Add Linuxbrew to path
