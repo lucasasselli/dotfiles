@@ -12,6 +12,7 @@ setopt autocd
 setopt extendedglob
 setopt inc_append_history
 setopt hist_ignore_dups
+setopt COMPLETE_ALIASES
 setopt hist_ignore_space
 unsetopt beep
 
