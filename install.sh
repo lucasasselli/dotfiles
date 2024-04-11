@@ -26,7 +26,6 @@ function dotlink(){
 
 function create_links(){
     dotlink bashrc
-    dotlink inputrc
     dotlink tmux.conf
 }
 

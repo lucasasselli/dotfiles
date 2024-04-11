@@ -1,12 +1,16 @@
-export PATH=$HOME/.local/bin:$PATH
-export PATH=/opt/riscv/bin:$PATH
-
-export LD_LIBRARY_PATH=/opt/systemc/lib-linux64
-export LD_LIBRARY_PATH=/opt/uvm-systemc/lib-linux64:$LD_LIBRARY_PATH
+#    _               _              
+#   | |             | |             
+#   | |__   __ _ ___| |__  _ __ ___ 
+#   | '_ \ / _` / __| '_ \| '__/ __|
+#  _| |_) | (_| \__ \ | | | | | (__ 
+# (_)_.__/ \__,_|___/_| |_|_|  \___|
+# 
 
 # Editor settings
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+export HISTCONTROL=ignoreboth:erasedups
 
 # Prompt theme
 PS1="$ "
@@ -17,22 +21,29 @@ alias ll="ls -l"
 alias la="ls -la"
 
 alias ec="vim $HOME/.bashrc"
+alias en="vim $HOME/.config/nvim/init.lua"
 alias rc="source $HOME/.bashrc"
 alias ev="vim $HOME/.vimrc"
 alias et="vim $HOME/.tmux.conf"
 
+alias t="tmux"
 alias ta="tmux attach"
 
-export DISPLAY=localhost:0.0
+alias vim=nvim
 
 # Fix env. var. autocomplete broken on Bash 4.2
 # http://lists.gnu.org/archive/html/bug-bash/2011-02/msg00274.html 
 shopt -s direxpand
 
+set bell-style none
+
 # History
-shopt -s histappend
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+bind '"\eOA": history-search-backward'
+bind '"\eOB": history-search-forward'
+set show-all-if-ambiguous on
+set completion-ignore-case on
 
 extract () {
     if [ -f $1 ] ; then
@@ -54,3 +65,8 @@ extract () {
         echo "'$1' is not a valid file"
     fi
 }
+
+# Load local config (if any!)
+if [[ -f ~/.bashrc.local ]]; then
+    source ~/.bashrc.local
+fi
