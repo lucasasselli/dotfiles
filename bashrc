@@ -12,10 +12,17 @@ export EDITOR="$VISUAL"
 
 export HISTCONTROL=ignoreboth:erasedups
 
-# Prompt theme
-PS1="$ "
+# Prompt theme {{{
+rightprompt()
+{
+    tput setaf 10
+    printf "$C_GREEN%*s$C_RESET" $COLUMNS $(pwd)
+    tput sgr0
+}
+PROMPT_COMMAND='PS1="\[$(tput sc; rightprompt; tput rc)\]$ "'
+# }}}
 
-# Aliases
+# Aliases {{{
 alias c="clear"
 alias ll="ls -l"
 alias la="ls -la"
@@ -30,6 +37,8 @@ alias t="tmux"
 alias ta="tmux attach"
 
 alias vim=nvim
+
+# }}}
 
 # Fix env. var. autocomplete broken on Bash 4.2
 # http://lists.gnu.org/archive/html/bug-bash/2011-02/msg00274.html 
@@ -70,3 +79,5 @@ extract () {
 if [[ -f ~/.bashrc.local ]]; then
     source ~/.bashrc.local
 fi
+
+# vim:fdm=marker fdl=0

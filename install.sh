@@ -30,6 +30,7 @@ function create_links(){
 }
 
 
+# Handle user input
 while true; do
     read -p "This script will replace your current configuration. Do you want to continue? [y/n] " yn
     case $yn in
