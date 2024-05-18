@@ -16,7 +16,7 @@ export HISTCONTROL=ignoreboth:erasedups
 rightprompt()
 {
     tput setaf 10
-    printf "$C_GREEN%*s$C_RESET" $COLUMNS $(pwd)
+    printf "$C_GREEN%*s$C_RESET" $COLUMNS "$(pwd)"
     tput sgr0
 }
 PROMPT_COMMAND='PS1="\[$(tput sc; rightprompt; tput rc)\]$ "'
