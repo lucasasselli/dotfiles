@@ -6,8 +6,11 @@
 # (_)_.__/ \__,_|___/_| |_|_|  \___|
 # 
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 # Editor settings
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 export HISTCONTROL=ignoreboth:erasedups
